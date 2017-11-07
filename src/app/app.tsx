@@ -5,7 +5,7 @@ import { Action } from 'utils';
 import { LocationState } from 'redux-first-router';
 import { AppState } from 'app/app.reducer';
 import * as appStyles from './app.styles';
-import { incrementCounter, decrementCounter } from './app.actions';
+import { INCREMENT_COUNTER, DECREMENT_COUNTER } from './app.actions';
 
 interface Props {
   location: LocationState,
@@ -34,8 +34,8 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => ({
-  increment: (num: number) => dispatch(incrementCounter(num)),
-  decrement: (num: number) => dispatch(decrementCounter(num))
+  increment: (num: number) => dispatch(INCREMENT_COUNTER(num)),
+  decrement: (num: number) => dispatch(DECREMENT_COUNTER(num))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
