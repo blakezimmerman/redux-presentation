@@ -1,8 +1,8 @@
 import { Action } from 'utils';
 
 // Action Constants
-export const INCREMENT_COUNTER = 'INCREMENT';
-export const DECREMENT_COUNTER = 'DECREMENT';
+export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
+export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
 
 // Action Creators
 export const incrementCounter: (num: number) => Action<number> =
