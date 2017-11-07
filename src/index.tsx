@@ -30,12 +30,13 @@ const epicMiddleware = createEpicMiddleware(rootEpic);
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware, routerEnhancer } from 'router/router';
+import logger from 'redux-logger';
 
 const store = createStore(
   rootReducer,
   compose(
     routerEnhancer,
-    applyMiddleware(epicMiddleware, routerMiddleware)
+    applyMiddleware(epicMiddleware, routerMiddleware, logger)
   )
 );
 

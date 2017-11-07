@@ -1,4 +1,4 @@
-import { Action, actionCreator } from 'utils';
+import { Action, actionCreator, asyncActionCreator } from 'utils';
 
 // ***** Our Way ***** //
 
@@ -24,3 +24,8 @@ export const DECREMENT_COUNTER = actionCreator('DECREMENT_COUNTER');
 //     type: DECREMENT_COUNTER,
 //     payload: num
 //   });
+
+
+// ***** Async Actions ***** //
+
+export const FETCH_DATA = asyncActionCreator<void, Object>('FETCH_DATA');

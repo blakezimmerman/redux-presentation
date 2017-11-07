@@ -5,25 +5,36 @@ import { Action } from 'utils';
 import { LocationState } from 'redux-first-router';
 import { AppState } from 'app/app.reducer';
 import * as appStyles from './app.styles';
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from './app.actions';
+import { INCREMENT_COUNTER, DECREMENT_COUNTER, FETCH_DATA } from './app.actions';
 
 interface Props {
   location: LocationState,
   app: AppState,
   increment: (num: number) => Action<number>,
-  decrement: (num: number) => Action<number>
+  decrement: (num: number) => Action<number>,
+  fetchDataPending: () => Action<void>
 }
 
 const App = (props: Props) => {
   const incrementByTwo = () => props.increment(2);
   const decrementByTwo = () => props.decrement(2);
+  const fetchData = () => props.fetchDataPending();
 
   return (
     <div>
-      <div>Count by twos!</div>
-      <button onClick={incrementByTwo}>+</button>
-      <div>Current Value: {props.app.counter}</div>
-      <button onClick={decrementByTwo}>-</button>
+      <div>
+        <div>Count by twos!</div>
+        <button onClick={incrementByTwo}>+</button>
+        <div>Current Value: {props.app.counter}</div>
+        <button onClick={decrementByTwo}>-</button>
+      </div>
+      <div>
+        <button onClick={fetchData}>Fetch Data</button>
+        <div>
+          {'Current Data: '}
+          {props.app.data.result ? props.app.data.result.toString() : 'None'}
+        </div>
+      </div>
     </div>
   )
 };
@@ -40,7 +51,8 @@ const mapStateToProps = (state: State) => ({
 
 const mapDispatchToProps = ({
   increment: INCREMENT_COUNTER,
-  decrement: DECREMENT_COUNTER
+  decrement: DECREMENT_COUNTER,
+  fetchDataPending: FETCH_DATA.PENDING
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

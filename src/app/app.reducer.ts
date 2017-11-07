@@ -1,10 +1,6 @@
 import { combineReducers } from 'redux';
-import { Action, getType } from 'utils';
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from './app.actions';
-
-export interface AppState {
-  counter: number;
-}
+import { Action, getType, AsyncReducerState, asyncReducer } from 'utils';
+import { INCREMENT_COUNTER, DECREMENT_COUNTER, FETCH_DATA } from './app.actions';
 
 const counter = (state = 0, action: Action<number>) => {
   switch (action.type) {
@@ -17,6 +13,14 @@ const counter = (state = 0, action: Action<number>) => {
   }
 };
 
+const data = asyncReducer<Object>(FETCH_DATA);
+
 export const app = combineReducers({
-  counter
+  counter,
+  data
 });
+
+export interface AppState {
+  counter: number;
+  data: AsyncReducerState<Object>
+}
