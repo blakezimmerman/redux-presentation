@@ -33,9 +33,14 @@ const mapStateToProps = (state: State) => ({
   app: state.app
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => ({
-  increment: (num: number) => dispatch(INCREMENT_COUNTER(num)),
-  decrement: (num: number) => dispatch(DECREMENT_COUNTER(num))
+// const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) => ({
+//   increment: (num: number) => dispatch(INCREMENT_COUNTER(num)),
+//   decrement: (num: number) => dispatch(DECREMENT_COUNTER(num))
+// });
+
+const mapDispatchToProps = ({
+  increment: INCREMENT_COUNTER,
+  decrement: DECREMENT_COUNTER
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
