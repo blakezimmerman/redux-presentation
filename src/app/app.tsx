@@ -53,9 +53,7 @@ const App = (props: Props) => {
   };
 
   return (
-    <div>
-      <GetPage/>
-    </div>
+    <GetPage/>
   );
 };
 
