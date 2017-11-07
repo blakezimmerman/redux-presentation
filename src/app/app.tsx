@@ -4,8 +4,11 @@ import { State } from 'index';
 import { Action } from 'utils';
 import { LocationState } from 'redux-first-router';
 import { AppState } from 'app/app.reducer';
-import * as appStyles from './app.styles';
 import { INCREMENT_COUNTER, DECREMENT_COUNTER, FETCH_DATA } from './app.actions';
+import PageOne from './pages/pageOne';
+import PageTwo from './pages/pageTwo';
+import NotFound from './pages/404';
+import Link from 'redux-first-router-link';
 
 interface Props {
   location: LocationState,
@@ -20,7 +23,7 @@ const App = (props: Props) => {
   const decrementByTwo = () => props.decrement(2);
   const fetchData = () => props.fetchDataPending();
 
-  return (
+  const ActionsDemo = () => (
     <div>
       <div>
         <div>Count by twos!</div>
@@ -34,9 +37,26 @@ const App = (props: Props) => {
           {'Current Data: '}
           {props.app.data.result ? props.app.data.result.toString() : 'None'}
         </div>
+        <Link to='/page-one'>Go to Page One</Link>
       </div>
+
     </div>
-  )
+  );
+
+  const GetPage = () => {
+    switch (props.location.pathname) {
+      case ('/'): return <ActionsDemo/>;
+      case ('/page-one'): return <PageOne/>;
+      case ('/page-two'): return <PageTwo/>;
+      default: return <NotFound/>;
+    }
+  };
+
+  return (
+    <div>
+      <GetPage/>
+    </div>
+  );
 };
 
 const mapStateToProps = (state: State) => ({

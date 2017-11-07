@@ -10,5 +10,9 @@ module.exports = webpackMerge(commonConfig, {
 
   output: {
     filename: 'app.bundle.js'
+  },
+
+  devServer: {
+    historyApiFallback: true
   }
 });
