@@ -83,4 +83,4 @@ export const asyncReducer: <T>(asyncAction: AsyncActionDispatcher<any, T>) => As
 
 // Epics
 
-export type Epic = (action$: ActionsObservable<Action<any>>) => Observable<Action<any>>;
+export type Epic = (actions$: ActionsObservable<Action<any>>) => Observable<Action<any>>;
